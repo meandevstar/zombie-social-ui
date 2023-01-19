@@ -1,6 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { Trade, User } from 'definitions/interfaces';
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 
 export interface TradeState {
   user: User | null;
@@ -33,5 +33,6 @@ export const tradeSlice = createSlice({
 });
 
 export const { setTradeUser, setLoading, setError } = tradeSlice.actions;
+export const trade = createAction<Trade>(`${PREFIX}/trade`);
 
 export const { reducer: tradeReducer } = tradeSlice;
