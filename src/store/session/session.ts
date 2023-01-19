@@ -33,4 +33,10 @@ export const sessionSlice = createSlice({
 });
 
 export const { setUser, setSurvivors, setLoading } = sessionSlice.actions;
+export const register = createAction<CreateUser>(`${PREFIX}/register`);
+export const getUser = createAction<string>(`${PREFIX}/getUser`);
+export const updateUser = createAction<UpdateUser>(`${PREFIX}/updateUser`);
+export const getSurvivors = createAction(`${PREFIX}/getSurvivors`);
+export const reportAsInfected = createAction<UserReport>(`${PREFIX}/reportAsInfected`);
+
 export const { reducer: sessionReducer } = sessionSlice;
