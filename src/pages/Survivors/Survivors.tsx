@@ -16,6 +16,7 @@ import {
   selectSessionLoading,
   selectSessionSurvivors,
 } from 'store/session/selectors';
+import TradeModal from './TradeModal';
 
 const Survivors = () => {
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ const Survivors = () => {
           ))}
         </Grid>
       )}
+      <TradeModal />
     </SurvivorsContainer>
   );
 }

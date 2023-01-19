@@ -16,11 +16,11 @@ import {
 } from './SurvivorCard.styles';
 import SurvivorCardInventory from './SurvivorCardInventory';
 
-
 // Hooks
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 // Store
+import { setTradeUser } from 'store/trade';
 import { selectSessionUser } from 'store/session/selectors';
 import { reportAsInfected } from 'store/session';
 
@@ -40,7 +40,7 @@ const SurvivorCard = (user: User) => {
   }, [flaggedUsers, sessionUser]);
 
   const trade = useCallback(() => {
-    //
+    dispatch(setTradeUser(user));
   }, [user, dispatch]);
 
   const report = useCallback(() => {
