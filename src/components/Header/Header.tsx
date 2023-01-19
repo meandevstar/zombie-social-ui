@@ -27,6 +27,8 @@ const Header = () => {
               Reports
             </Button>
           </Box>
+          {!user && <Button to="/register">Register</Button>}
+          {user && <Button to="/account">{user.name}</Button>}
         </Toolbar>
       </Container>
     </AppBar>
