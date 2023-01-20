@@ -6,7 +6,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import * as api from 'api';
 
 import { trade as tradeAction, setLoading, setError, setTradeUser } from './trade';
-import { getSurvivors } from 'store/session';
+import { getSurvivors } from 'store/survivors';
 
 function* trade(action: PayloadAction<Trade>) {
   try {

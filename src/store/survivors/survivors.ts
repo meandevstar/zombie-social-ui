@@ -5,6 +5,7 @@ import { createAction, createSlice } from '@reduxjs/toolkit';
 export interface SurvivorsState {
   survivors: User[];
   page: number;
+  itemsPerPage: number;
   loading: boolean;
 }
 
@@ -13,6 +14,7 @@ const PREFIX = 'survivors';
 const initialState: SurvivorsState = {
   survivors: [],
   page: 1,
+  itemsPerPage: 10,
   loading: false,
 };
 

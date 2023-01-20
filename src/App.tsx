@@ -11,7 +11,8 @@ import Header from './components/Header';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 // Store
-import { getSurvivors, getUser } from 'store/session';
+import { getUser } from 'store/session';
+import { getSurvivors } from 'store/survivors';
 import { selectSessionUser } from 'store/session/selectors';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
   useEffect(() => {
     dispatch(getSurvivors());
     if (user) {
-      dispatch(getUser(user.id));
+      dispatch(getUser(user._id));
     }
     // eslint-disable-next-line
   }, [dispatch]);

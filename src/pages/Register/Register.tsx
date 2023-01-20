@@ -51,7 +51,6 @@ const Register = () => {
   });
 
   const submit = useCallback((values: RegisterSchema) => {
-    console.log('VALUES ===>', values);
     dispatch(registerAction({
       name: values.name,
       age: values.age,
@@ -70,7 +69,7 @@ const Register = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (user?.id) {
+    if (user?._id) {
       navigate('/');
     }
   }, [user, navigate]);

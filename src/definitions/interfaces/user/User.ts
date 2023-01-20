@@ -3,7 +3,7 @@ import { Gender } from 'definitions/enums';
 import { ItemType, UserStatus, UserType } from 'definitions/enums';
 
 export interface User {
-  _id?: string;
+  _id: string;
   id: string;
   name: string;
   age: number;

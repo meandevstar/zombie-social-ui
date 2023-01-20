@@ -47,7 +47,7 @@ const Account = () => {
   const submit = useCallback((values: AccountSchema) => {
     if (user) {
       dispatch(updateUser({
-        id: user.id,
+        id: user._id,
         data: {
           lastLocation: values,
         }

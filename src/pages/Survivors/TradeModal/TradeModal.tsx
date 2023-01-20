@@ -38,8 +38,8 @@ const TradeModal = () => {
   const submit = useCallback(() => {
     if (user && tradeUser) {
       dispatch(trade({
-        sender: user?.id,
-        receiver: tradeUser?.id,
+        sender: user?._id,
+        receiver: tradeUser?._id,
         sendItems,
         receivedItems,
       }));

@@ -11,17 +11,15 @@ import useRouteProtect from 'hooks/useRouteProtect';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 // Store
-import { getSurvivors } from 'store/session';
-import {
-  selectSessionLoading,
-  selectSessionSurvivors,
-} from 'store/session/selectors';
+import { getSurvivors } from 'store/survivors';
+import { selectSurvivors } from 'store/survivors/selectors';
+import { selectSessionLoading } from 'store/session/selectors';
 import TradeModal from './TradeModal';
 
 const Survivors = () => {
   const dispatch = useAppDispatch();
 
-  const survivors = useAppSelector(selectSessionSurvivors);
+  const survivors = useAppSelector(selectSurvivors);
   const sessionLoading = useAppSelector(selectSessionLoading);
 
   useRouteProtect();
@@ -40,7 +38,7 @@ const Survivors = () => {
       {!sessionLoading && (
         <Grid container spacing={3}>
           {survivors.map((survivor) => (
-            <Grid key={survivor.id} item xs={12} md={4} lg={3}>
+            <Grid key={survivor._id} item xs={12} md={4} lg={3}>
               <SurvivorCard {...survivor} />
             </Grid>
           ))}

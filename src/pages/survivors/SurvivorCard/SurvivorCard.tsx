@@ -22,7 +22,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 // Store
 import { setTradeUser } from 'store/trade';
 import { selectSessionUser } from 'store/session/selectors';
-import { reportAsInfected } from 'store/session';
+import { reportAsInfected } from 'store/survivors';
 
 const SurvivorCard = (user: User) => {
   const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const SurvivorCard = (user: User) => {
   }, [flaggedUsers]);
 
   const alreadyReported = useMemo(() => {
-    return !!flaggedUsers.find((user) => user._id === sessionUser?.id);
+    return !!flaggedUsers.find((user) => user._id === sessionUser?._id);
   }, [flaggedUsers, sessionUser]);
 
   const trade = useCallback(() => {
@@ -46,8 +46,8 @@ const SurvivorCard = (user: User) => {
   const report = useCallback(() => {
     if (sessionUser) {
       dispatch(reportAsInfected({
-        user: user.id,
-        reporter: sessionUser?.id,
+        user: user._id,
+        reporter: sessionUser?._id,
       }));
     }
   }, [user, sessionUser, dispatch]);
@@ -78,12 +78,12 @@ const SurvivorCard = (user: User) => {
           ammo={inventory.AMMO}
         />
         <SurvivorCardActions>
-          <Button variant="contained" disabled={sessionUser?.id === user.id} onClick={trade}>
+          <Button variant="contained" disabled={sessionUser?._id === user._id} onClick={trade}>
             Trade
           </Button>
           <Button
             variant="contained"
-            disabled={infected || sessionUser?.id === user.id || alreadyReported}
+            disabled={infected || sessionUser?._id === user._id || alreadyReported}
             onClick={report}
           >
             Report as infected

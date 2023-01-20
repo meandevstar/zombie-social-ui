@@ -12,11 +12,11 @@ import useRouteProtect from 'hooks/useRouteProtect';
 import { useAppSelector } from 'hooks';
 
 // Store
-import { selectSessionSurvivors } from 'store/session/selectors';
+import { selectSurvivors } from 'store/survivors/selectors';
 import { ItemType } from 'definitions/enums';
 
 const Reports = () => {
-  const survivors = useAppSelector(selectSessionSurvivors);
+  const survivors = useAppSelector(selectSurvivors);
 
   const infectedSurvivors = useMemo(() => {
     return survivors.filter((survivor) => survivor.flaggedUsers.length >= 3);
