@@ -36,7 +36,7 @@ const SurvivorCard = (user: User) => {
   }, [flaggedUsers]);
 
   const alreadyReported = useMemo(() => {
-    return flaggedUsers.find((user) => user._id === sessionUser?.id);
+    return !!flaggedUsers.find((user) => user._id === sessionUser?.id);
   }, [flaggedUsers, sessionUser]);
 
   const trade = useCallback(() => {
