@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { User, UserReport } from 'definitions/interfaces';
+import type { Pagination, User, UserReport } from 'definitions/interfaces';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import * as api from 'api';
@@ -10,14 +10,21 @@ import {
   reportAsInfected as reportAsInfectedAction,
   setSurvivors,
   setLoading,
+  setTotal,
 } from './survivors';
+import { store } from 'store/store';
+import { selectSurvivorsItemsPerPage, selectSurvivorsPage } from './selectors';
 
 function* getSurvivors() {
   try {
+    const state = store.getState();
+    const page = selectSurvivorsPage(state);
+    const itemsPerPage = selectSurvivorsItemsPerPage(state);
     yield put(setLoading(true));
-    const result: AxiosResponse<User[]> =
-      yield call(api.getSurvivors);
-    yield put(setSurvivors(result.data));
+    const result: AxiosResponse<Pagination<User>> =
+      yield call(api.getSurvivors, { page: page - 1, limit: itemsPerPage });
+    yield put(setTotal(result.data.total));
+    yield put(setSurvivors(result.data.data));
     yield put(setLoading(false));
   } catch (error) {
     yield put(setLoading(false));
