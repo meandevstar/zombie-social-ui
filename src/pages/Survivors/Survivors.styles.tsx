@@ -12,3 +12,10 @@ export const SurvivorsLoading = styled('div')`
   justify-content: center;
   align-items: center;
 `;
+
+export const SurvivorsPagination = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+`;
