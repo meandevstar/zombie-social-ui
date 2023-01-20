@@ -4,7 +4,9 @@ import createSagaMiddleware from 'redux-saga';
 
 import { sessionPersistConfig, sessionReducer } from './session';
 import { survivorsPersistConfig, survivorsReducer } from './survivors';
+import { reportsPersistConfig, reportsReducer } from './reports';
 import { tradePersistConfig, tradeReducer } from './trade';
+
 import rootSaga from './rootSaga';
 
 export const sagaMiddleware = createSagaMiddleware();
@@ -13,6 +15,7 @@ export const store = configureStore({
   reducer: {
     session: persistReducer(sessionPersistConfig, sessionReducer),
     survivors: persistReducer(survivorsPersistConfig, survivorsReducer),
+    reports: persistReducer(reportsPersistConfig, reportsReducer),
     trade: persistReducer(tradePersistConfig, tradeReducer),
   },
   devTools: true,
