@@ -23,7 +23,7 @@ type Resources = {
 
 interface ReportsResourcesProps {
   resources: Resources;
-  infectedResources: Resources;
+  infectedResources: number;
 }
 
 const ReportsResourcesValues = ({ resources }: { resources: Resources }) => (
@@ -71,8 +71,7 @@ const ReportsResources = ({ resources, infectedResources }: ReportsResourcesProp
   <ReportsResourcesContainer>
     <Typography variant="h6">Average amount of resources for each survivor</Typography>
     <ReportsResourcesValues resources={resources} />
-    <Typography variant="h6">Amount of resources lost due to infected</Typography>
-    <ReportsResourcesValues resources={infectedResources} />
+    <Typography variant="h6">Amount of resources lost due to infected: {infectedResources}</Typography>
   </ReportsResourcesContainer>
 );
 

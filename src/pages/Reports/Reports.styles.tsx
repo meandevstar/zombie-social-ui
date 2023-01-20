@@ -11,3 +11,10 @@ export const ReportsData = styled('div')`
   align-items: center;
   margin-top: 50px;
 `;
+
+export const ReportsLoading = styled('div')`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

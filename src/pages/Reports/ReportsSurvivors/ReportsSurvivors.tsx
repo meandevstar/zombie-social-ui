@@ -1,4 +1,3 @@
-import type { User } from 'definitions/interfaces';
 import { useCallback, useMemo } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
@@ -20,19 +19,26 @@ interface CustomLabelProps {
 }
 
 interface ReportsSurvivorsProps {
-  infectedSurvivors: User[];
-  otherSurvivors: User[];
+  infectedSurvivors: number;
+  otherSurvivors: number;
 }
 
 const ReportsSurvivors = ({ infectedSurvivors, otherSurvivors }: ReportsSurvivorsProps) => {
   const data = useMemo(() => {
     return [
-      { name: 'Infected Survivors', value: infectedSurvivors.length, color: '#0088FE' },
-      { name: 'Other Survivors', value: otherSurvivors.length, color: '#00C49F' }
+      { name: 'Infected Survivors', value: infectedSurvivors, color: '#0088FE' },
+      { name: 'Other Survivors', value: otherSurvivors, color: '#00C49F' }
     ];
   }, [infectedSurvivors, otherSurvivors]);
 
-  const renderCustomizedLabel = useCallback(({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }: CustomLabelProps) => {
+  const renderCustomizedLabel = useCallback(({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+  }: CustomLabelProps) => {
     const RADIAN = Math.PI / 180;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
